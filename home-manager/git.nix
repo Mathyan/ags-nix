@@ -11,12 +11,12 @@ in
       github.user = name;
       push.autoSetupRemote = true;
     };
-    programs.ssh = {
-      enable = true;
-      addKeysToAgent = "yes";
-    };
-    services.ssh-agent.enable = true;
     userEmail = "matijan.cvitanovic@outlook.com";
     userName = name;
   };
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = "yes";
+  };
+  services.ssh-agent.enable = true;
 }
