@@ -7,6 +7,7 @@
       home-manager,
       nixpkgs,
       solaar,
+      nixos-unstable-small,
       ...
     }:
     {
@@ -14,6 +15,12 @@
         inherit inputs;
       };
 
+      nixpkgs.overlays = [
+        (final: prev: {
+          xdg-desktop-portal-hyprland =
+            nixos-unstable-small.legacyPackages.${final.system}.xdg-desktop-portal-hyprland;
+        })
+      ];
       # nixos config
       nixosConfigurations = {
         "nixos" = nixpkgs.lib.nixosSystem {
@@ -55,7 +62,9 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
+    nixos-unstable-small = {
+      url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
