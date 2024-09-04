@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   xdg = {
     #configFile.nvim.source = ../nvim;
     desktopEntries."nvim" = lib.mkIf pkgs.stdenv.isLinux {
@@ -10,15 +11,15 @@
       comment = "Edit text files";
       icon = "nvim";
       exec = "xterm -e ${pkgs.neovim}/bin/nvim %F";
-      categories = ["TerminalEmulator"];
+      categories = [ "TerminalEmulator" ];
       terminal = false;
-      mimeType = ["text/plain"];
+      mimeType = [ "text/plain" ];
     };
   };
 
   home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
+    EDITOR = "^nvim";
+    VISUAL = "^nvim";
   };
 
   programs.neovim = {
@@ -29,13 +30,14 @@
     withRuby = true;
     withNodeJs = true;
     withPython3 = true;
-    extraPython3Packages = ps: with ps; [
+    extraPython3Packages =
+      ps: with ps; [
         pip
         pynvim
         unidecode
         black
         isort
-    ];
+      ];
     extraPackages = with pkgs; [
       nixfmt-rfc-style
       nodePackages.prettier

@@ -146,7 +146,7 @@ in
           "ALT, Q, killactive"
           "SUPER, F, togglefloating"
           "SUPER, G, fullscreen"
-          "SUPER, O, fakefullscreen"
+          # "SUPER, O, fakefullscreen"
           "SUPER, P, togglesplit"
 
           (mvfocus "k" "u")
