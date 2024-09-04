@@ -1,10 +1,8 @@
+{ inputs, lib, ... }:
+let
+  username = "mathyan";
+in
 {
-  inputs,
-  lib,
-  ...
-}: let
-  username = "demeter";
-in {
   imports = [
     /etc/nixos/hardware-configuration.nix
     ./system.nix
@@ -14,6 +12,7 @@ in {
     ./laptop.nix
     ./hyprland.nix
     ./gnome.nix
+    ./mouse.nix
   ];
 
   hyprland.enable = true;
@@ -57,6 +56,7 @@ in {
         ../home-manager/theme.nix
         ../home-manager/tmux.nix
         ../home-manager/wezterm.nix
+        ../home-manager/pueue.nix
         ./home.nix
       ];
     };

@@ -17,6 +17,10 @@
       # yabridgectl
       # wine-staging
       nodejs
+      betterdiscordctl
+      discord
+      gh
+      pueue
     ];
     cli = [
       bat

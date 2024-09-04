@@ -1,47 +1,57 @@
 {
   description = "Configurations of Aylur";
 
-  outputs = inputs @ {
-    self,
-    home-manager,
-    nixpkgs,
-    ...
-  }: {
-    packages.x86_64-linux.default =
-      nixpkgs.legacyPackages.x86_64-linux.callPackage ./ags {inherit inputs;};
+  outputs =
+    inputs@{
+      self,
+      home-manager,
+      nixpkgs,
+      solaar,
+      ...
+    }:
+    {
+      packages.x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.callPackage ./ags {
+        inherit inputs;
+      };
 
-    # nixos config
-    nixosConfigurations = {
-      "nixos" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          asztal = self.packages.x86_64-linux.default;
+      # nixos config
+      nixosConfigurations = {
+        "nixos" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+            asztal = self.packages.x86_64-linux.default;
+          };
+          modules = [
+            ./nixos/nixos.nix
+            home-manager.nixosModules.home-manager
+            solaar.nixosModules.default
+            { networking.hostName = "nixos"; }
+          ];
         };
-        modules = [
-          ./nixos/nixos.nix
-          home-manager.nixosModules.home-manager
-          {networking.hostName = "nixos";}
-        ];
       };
-    };
 
-    # macos hm config
-    homeConfigurations = {
-      "demeter" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-darwin;
-        extraSpecialArgs = {inherit inputs;};
-        modules = [
-          ({pkgs, ...}: {
-            nix.package = pkgs.nix;
-            home.username = "demeter";
-            home.homeDirectory = "/Users/demeter";
-            imports = [./macos/home.nix];
-          })
-        ];
+      # macos hm config
+      homeConfigurations = {
+        "demeter" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-darwin;
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            (
+              { pkgs, ... }:
+              {
+                nix.package = pkgs.nix;
+                home.username = "demeter";
+                home.homeDirectory = "/Users/demeter";
+                imports = [ ./macos/home.nix ];
+              }
+            )
+          ];
+        };
       };
     };
-  };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -50,7 +60,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    solaar = {
+      url = "github:Svenum/Solaar-Flake/main"; # Uncomment line for latest unstable version
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     hyprland-plugins = {

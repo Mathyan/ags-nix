@@ -1,6 +1,7 @@
 let
-  name = "Aylur";
-in {
+  name = "Mathyan";
+in
+{
   programs.git = {
     enable = true;
     extraConfig = {
@@ -10,12 +11,12 @@ in {
       github.user = name;
       push.autoSetupRemote = true;
     };
-    userEmail = "k.demeter@protonmail.com";
+    programs.ssh = {
+      enable = true;
+      addKeysToAgent = "yes";
+    };
+    services.ssh-agent.enable = true;
+    userEmail = "matijan.cvitanovic@outlook.com";
     userName = name;
   };
-  programs.ssh = {
-    enable = true;
-    addKeysToAgent = "yes";
-  };
-  services.ssh-agent.enable = true;
 }
