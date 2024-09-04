@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   options.gnome = {
     enable = lib.mkEnableOption "Gnome";
   };
@@ -17,8 +18,9 @@
         wl-clipboard
       ];
 
-      gnome.excludePackages =
-        (with pkgs; [
+      gnome.excludePackages = (
+        with pkgs;
+        [
           # gnome-text-editor
           gnome-console
           gnome-photos
@@ -33,8 +35,8 @@
           totem # video player
           yelp # Help view
           gnome-font-viewer
-        ])
-        ++ (with pkgs.gnome; [
+          # ])
+          # ++ (with pkgs.gnome; [
           gnome-music
           gnome-characters
           tali # poker game
@@ -45,7 +47,8 @@
           gnome-initial-setup
           gnome-shell-extensions
           gnome-maps
-        ]);
+        ]
+      );
     };
 
     services.xserver = {
