@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./modules/packages.nix
     ./scripts/blocks.nix
@@ -8,7 +9,7 @@
 
   packages = with pkgs; {
     linux = [
-      (mpv.override {scripts = [mpvScripts.mpris];})
+      (mpv.override { scripts = [ mpvScripts.mpris ]; })
       spotify
       # gnome-secrets
       fragments
@@ -21,6 +22,9 @@
       discord
       gh
       pueue
+      jetbrains-toolbox
+      jetbrains.idea-ultimate
+      jdk
     ];
     cli = [
       bat

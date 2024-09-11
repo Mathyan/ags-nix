@@ -43,7 +43,7 @@
       nodePackages.prettier
       nodePackages.sql-formatter
       python3
-      python311Packages.pip
+      python312Packages.pip
       fish
       git
       gcc
@@ -62,6 +62,7 @@
       stylua
       alejandra
       ruff
+      python312Packages.python-lsp-ruff
     ];
   };
 }

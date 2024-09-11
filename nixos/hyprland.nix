@@ -47,7 +47,7 @@
       gnome-calendar
       gnome-boxes
       gnome-system-monitor
-      gnome.gnome-control-center
+      gnome-control-center
       gnome-weather
       gnome-calculator
       gnome-clocks

@@ -36,7 +36,9 @@ in
     backupFileExtension = "backup";
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = {
+      inherit inputs;
+    };
     users.${username} = {
       home.username = username;
       home.homeDirectory = "/home/${username}";
@@ -64,7 +66,7 @@ in
 
   specialisation = {
     gnome.configuration = {
-      system.nixos.tags = ["Gnome"];
+      system.nixos.tags = [ "Gnome" ];
       hyprland.enable = lib.mkForce false;
       gnome.enable = true;
     };
