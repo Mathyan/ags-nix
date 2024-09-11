@@ -10,7 +10,7 @@
       name = "NeoVim";
       comment = "Edit text files";
       icon = "nvim";
-      exec = "xterm -c '${pkgs.neovim}/bin/nvim %F'";
+      exec = "xterm -c ${pkgs.neovim}/bin/nvim %F";
       categories = [ "TerminalEmulator" ];
       terminal = false;
       mimeType = [ "text/plain" ];
