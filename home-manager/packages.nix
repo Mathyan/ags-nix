@@ -23,7 +23,6 @@
       gh
       pueue
       jetbrains-toolbox
-      jetbrains.idea-ultimate
       jdk
     ];
     cli = [
