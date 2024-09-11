@@ -61,6 +61,7 @@
       lua-language-server
       stylua
       alejandra
+      ruff
     ];
   };
 }
