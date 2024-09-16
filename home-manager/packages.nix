@@ -24,6 +24,7 @@
       pueue
       jetbrains-toolbox
       jdk
+      zed-editor
     ];
     cli = [
       bat

@@ -15,12 +15,12 @@
         inherit inputs;
       };
 
-      nixpkgs.overlays = [
-        (final: prev: {
-          xdg-desktop-portal-hyprland =
-            nixos-unstable-small.legacyPackages.${final.system}.xdg-desktop-portal-hyprland;
-        })
-      ];
+      # nixpkgs.overlays = [
+      #   (final: prev: {
+      #     xdg-desktop-portal-hyprland =
+      #       nixos-unstable-small.legacyPackages.${final.system}.xdg-desktop-portal-hyprland;
+      #   })
+      # ];
       # nixos config
       nixosConfigurations = {
         "nixos" = nixpkgs.lib.nixosSystem {
