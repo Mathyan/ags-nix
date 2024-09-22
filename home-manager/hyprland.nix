@@ -103,6 +103,8 @@ in
           (f "de.haeckerfelix.Fragments")
           (f "com.github.Aylur.ags")
           "workspace 7, title:Spotify"
+          "workspace 5, title:Steam"
+          "workspace 2, title:Firefox"
         ];
 
       bind =
