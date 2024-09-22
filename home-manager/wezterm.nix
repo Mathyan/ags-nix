@@ -159,6 +159,7 @@
         	{ key = "p", mods = "CTRL", action = wa.EmitEvent("padding-off") },
         	{ key = "o", mods = "CTRL", action = wa.EmitEvent("toggle-opacity") },
         }
+        config.fornt_end = "WebGpu"
       '';
     };
 }
