@@ -1,7 +1,8 @@
 let
   mod = "Mod4";
   alt = "Mod1";
-in {
+in
+{
   wayland.windowManager.sway = {
     enable = true;
     config = {
@@ -11,9 +12,9 @@ in {
           natural_scroll = "disabled";
         };
       };
-      bars = [];
+      bars = [ ];
       keybindings = {
-        "${mod}+Return" = "exec xterm";
+        "${mod}+Return" = "exec wezterm";
         "${mod}+w" = "exec firefox";
         "${alt}+q" = "kill";
         "${mod}+f" = "floating toggle";

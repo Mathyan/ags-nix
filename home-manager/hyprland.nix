@@ -134,9 +134,9 @@ in
           ",XF86Launch4,   ${e} -r 'recorder.start()'"
           ",Print,         exec, ${screenshot}"
           "SHIFT,Print,    exec, ${screenshot} --full"
-          "SUPER, Return, exec, xterm" # xterm is a symlink, not actually xterm
+          "SUPER, Return, exec, wezterm"
           "SUPER, W, exec, firefox"
-          "SUPER, E, exec, xterm -c lf"
+          "SUPER, E, exec, wezterm start -- lf"
 
           # youtube
           ", XF86Launch1,  exec, ${yt}"
