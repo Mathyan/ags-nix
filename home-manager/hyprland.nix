@@ -105,6 +105,7 @@ in
           "workspace 7, title:Spotify"
           "workspace 5, title:Steam"
           "workspace 2, title:Firefox"
+          "workspace 5, title:gamescope"
         ];
 
       bind =
