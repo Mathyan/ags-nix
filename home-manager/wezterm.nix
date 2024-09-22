@@ -155,10 +155,12 @@
         	window:set_config_overrides(overrides)
         end)
 
-        # config.keys = {
-        # 	{ key = "p", mods = "CTRL", action = wa.EmitEvent("padding-off") },
-        # 	{ key = "o", mods = "CTRL", action = wa.EmitEvent("toggle-opacity") },
-        # }
+        --[[
+        config.keys = {
+        	{ key = "p", mods = "CTRL", action = wa.EmitEvent("padding-off") },
+        	{ key = "o", mods = "CTRL", action = wa.EmitEvent("toggle-opacity") },
+        }
+        --]]
         config.front_end = "WebGpu"
       '';
     };
