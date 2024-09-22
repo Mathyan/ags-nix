@@ -25,6 +25,7 @@
       jetbrains-toolbox
       jdk
       zed-editor
+      mangohud
     ];
     cli = [
       bat

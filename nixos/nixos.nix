@@ -60,7 +60,6 @@ in
         ../home-manager/wezterm.nix
         ../home-manager/pueue.nix
         ./home.nix
-        ../home-manager/steam.nix
       ];
     };
   };

@@ -1,8 +1,12 @@
-{config, ...}: {
+{ config, ... }:
+{
   news.display = "show";
 
   nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     warn-dirty = false;
   };
 
@@ -21,21 +25,23 @@
     ];
   };
 
-  gtk.gtk3.bookmarks = let
-    home = config.home.homeDirectory;
-  in [
-    "file://${home}/Documents"
-    "file://${home}/Music"
-    "file://${home}/Pictures"
-    "file://${home}/Videos"
-    "file://${home}/Downloads"
-    "file://${home}/Desktop"
-    "file://${home}/Work"
-    "file://${home}/Projects"
-    "file://${home}/Vault"
-    "file://${home}/School"
-    "file://${home}/.config Config"
-  ];
+  gtk.gtk3.bookmarks =
+    let
+      home = config.home.homeDirectory;
+    in
+    [
+      "file://${home}/Documents"
+      "file://${home}/Music"
+      "file://${home}/Pictures"
+      "file://${home}/Videos"
+      "file://${home}/Downloads"
+      "file://${home}/Desktop"
+      "file://${home}/Work"
+      "file://${home}/Projects"
+      "file://${home}/Vault"
+      "file://${home}/School"
+      "file://${home}/.config Config"
+    ];
 
   services = {
     kdeconnect = {
@@ -54,5 +60,6 @@
 
     bash.enable = true; # see note on other shells below
   };
+
   home.stateVersion = "21.11";
 }

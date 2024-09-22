@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # nix
   documentation.nixos.enable = false; # .desktop
   nixpkgs.config.allowUnfree = true;
@@ -21,6 +22,20 @@
   # dconf
   programs.dconf.enable = true;
 
+  # steam
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Enable Steam Remote Play ports
+    dedicatedServer.openFirewall = true; # Enable Source Dedicated Server ports
+    localNetworkGameTransfers.openFirewall = true; # Enable Local Network Game Transfer ports
+    gamescopeSession.enable = true; # Enable Gamescope session for Steam Deck-like experience
+  };
+
+  # gamescope
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true; # Enable real-time priority for Gamescope
+  };
   # packages
   environment.systemPackages = with pkgs; [
     home-manager
@@ -33,7 +48,7 @@
   services = {
     xserver = {
       enable = true;
-      excludePackages = [pkgs.xterm];
+      excludePackages = [ pkgs.xterm ];
     };
     printing.enable = true;
     flatpak.enable = true;
@@ -71,7 +86,7 @@
   # bootloader
   boot = {
     tmp.cleanOnBoot = true;
-    supportedFilesystems = ["ntfs"];
+    supportedFilesystems = [ "ntfs" ];
     loader = {
       timeout = 2;
       systemd-boot.enable = true;
