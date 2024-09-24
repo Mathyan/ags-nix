@@ -63,6 +63,9 @@
       alejandra
       ruff
       python312Packages.python-lsp-ruff
+      lua
+      luajitPackages.luarocks
+      lemminx
     ];
   };
 }
