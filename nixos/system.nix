@@ -36,6 +36,8 @@
     enable = true;
     capSysNice = true; # Enable real-time priority for Gamescope
   };
+
+  programs.nix-ld.enable = true;
   # packages
   environment.systemPackages = with pkgs; [
     home-manager
