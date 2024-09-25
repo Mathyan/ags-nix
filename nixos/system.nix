@@ -44,6 +44,7 @@
     neovim
     git
     wget
+    xorg.libX11
   ];
 
   # services
