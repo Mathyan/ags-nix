@@ -26,6 +26,7 @@
       jdk
       zed-editor
       mangohud
+      lshw-gui
     ];
     cli = [
       bat
