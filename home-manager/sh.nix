@@ -69,8 +69,8 @@ in
         NIXPKGS_ALLOW_UNFREE = "1";
         NIXPKGS_ALLOW_INSECURE = "1";
         SHELL = ''"${pkgs.nushell}/bin/nu"'';
-        EDITOR = config.home.sessionVariables.EDITOR;
-        VISUAL = config.home.sessionVariables.VISUAL;
+        EDITOR = "'${config.home.sessionVariables.EDITOR}'";
+        VISUAL = "'${config.home.sessionVariables.VISUAL}'";
       };
       extraConfig =
         let
@@ -116,7 +116,7 @@ in
                 source ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/${name}/${name}-completions.nu
               '';
             in
-            names: builtins.foldl' (prev: str: "${prev}\n${str}") "" (map (name: completion name) names);
+            names: builtins.foldl' (prev: str: "${prev}\n${str}") "" (map completion names);
         in
         ''
           $env.config = ${conf};
@@ -129,9 +129,18 @@ in
             "curl"
           ]}
 
-          alias pueue = ${pkgs.pueue}/bin/pueue
-          alias pueued = ${pkgs.pueue}/bin/pueued
-          use ${pkgs.nu_scripts}/share/nu_scripts/modules/background_task/task.nu
+          # alias pueue = ${pkgs.pueue}/bin/pueue
+          # alias pueued = ${pkgs.pueue}/bin/pueued
+          # use ${pkgs.nu_scripts}/share/nu_scripts/modules/background_task/task.nu
+          source ${pkgs.nu_scripts}/share/nu_scripts/modules/formats/from-env.nu
+
+          const path = "~/.nushellrc.nu"
+          const null = "/dev/null"
+          source (if ($path | path exists) {
+              $path
+          } else {
+              $null
+          })
         '';
     };
   };
