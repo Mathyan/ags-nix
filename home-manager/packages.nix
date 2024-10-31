@@ -27,6 +27,7 @@
       zed-editor
       mangohud
       lshw-gui
+      ente-auth
     ];
     cli = [
       bat
